@@ -8,12 +8,11 @@ class ItemPhotoWidget extends StatelessWidget {
     return Stack(
       children: [
         InkWell(
-          onTap: () {
-
-            },
+          onTap: () {},
           child: ClipRRect(
             borderRadius: BorderRadius.circular(6),
-            child: Image.asset("assets/images/test.png",
+            child: Image.asset(
+              "assets/images/test.png",
               fit: BoxFit.cover,
               width: 110,
               height: 130,
@@ -21,13 +20,10 @@ class ItemPhotoWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {
-
-          },
+          onTap: () {},
           child: ClipRRect(
             borderRadius: BorderRadius.circular(4),
-            child:
-            Image.asset('assets/icons/ic_bookmark.png'),
+            child: Image.asset('assets/icons/ic_bookmark.png'),
           ),
         ),
       ],
