@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/browse/pages/browse_page.dart';
 import 'package:movies_app/moduls/home/pages/home_page.dart';
 import 'package:movies_app/moduls/search/pages/search_page.dart';
-import 'package:movies_app/moduls/watchlist/pages/wath_list_page.dart';
+import 'package:movies_app/moduls/watchlist/pages/watch_list_page.dart';
 
 class LayoutView extends StatefulWidget {
   const LayoutView({super.key});
@@ -17,10 +17,10 @@ class LayoutView extends StatefulWidget {
 class _LayoutViewState extends State<LayoutView> {
   int currentIndex = 0;
   List<Widget> screens = [
-    HomePage(),
-    SearchPage(),
-    BrowsePage(),
-    WatchListPage(),
+    const HomePage(),
+    const SearchPage(),
+    const BrowsePage(),
+    const WatchListPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _LayoutViewState extends State<LayoutView> {
         bottomNavigationBar: Theme(
 
       data: Theme.of(context).copyWith(
-        canvasColor: Color.fromRGBO(26, 26, 26, 1.0),
+        canvasColor: const Color.fromRGBO(26, 26, 26, 1.0),
       ),
       child: BottomNavigationBar(
         currentIndex: currentIndex,
@@ -40,7 +40,7 @@ class _LayoutViewState extends State<LayoutView> {
           });
 
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: /*Image.asset("assets/icons/home-icon.png"),*/Icon(Icons.home),
             label: 'Home',
