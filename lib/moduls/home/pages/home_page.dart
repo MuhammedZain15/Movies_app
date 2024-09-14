@@ -11,35 +11,37 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        CarouselSlider(
-            items: [
-              PopularWidget(),
-              PopularWidget(),
-              PopularWidget(),
-
-            ],
-            options: CarouselOptions(
-              height:  size.height * 0.30,
-              viewportFraction: 1,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: false,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 4),
-              autoPlayAnimationDuration: Duration(milliseconds: 600),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enlargeCenterPage: true,
-              scrollDirection: Axis.horizontal,
-            )
-        ),
-        NewReleases(),
-        TopRatedWidget()
-
-
-      ],
+    return SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          CarouselSlider(
+              items: [
+                PopularWidget(),
+                PopularWidget(),
+                PopularWidget(),
+      
+              ],
+              options: CarouselOptions(
+                height:  size.height * 0.30,
+                viewportFraction: 1,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 4),
+                autoPlayAnimationDuration: Duration(milliseconds: 600),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
+              )
+          ),
+          NewReleases(),
+          TopRatedWidget()
+      
+      
+        ],
+      ),
     );
   }
 }

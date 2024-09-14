@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/layout/layout_view.dart';
+import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.dart';
 import 'package:movies_app/moduls/splash/splash_view.dart';
 import 'package:movies_app/services/theme/application_theme_manger.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ApplicationThemeManger.defaultTheme,
       routes: {
         SplashView.routeName: (BuildContext context) => const SplashView(),
-        LayoutView.routeName: (BuildContext context) =>  LayoutView(),
+        LayoutView.routeName: (BuildContext context) =>  const LayoutView(),
+        DetailsScreen.routeName: (BuildContext context) =>  const DetailsScreen(),
 
       },
       initialRoute: SplashView.routeName,
