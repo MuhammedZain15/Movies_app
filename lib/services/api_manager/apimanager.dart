@@ -32,7 +32,7 @@ class ApiManager {
       "language": "en-US",
       "page": "1",
     });
-    final response = await http.get(
+    final response =  await http.get(
       url,
       headers: {
         "Authorization": Constants.apiToken,
