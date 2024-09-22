@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/services/config/constants.dart';
 import 'package:http/http.dart' as http;
 import '../../models/popular/popular_movies_model.dart';
@@ -26,6 +27,7 @@ class ApiManager {
       throw Exception("Failed to fetch data");
     }
   }
+
   static Future<List<MoviesModel>> fetchUpcomingMovies() async {
     var url = Uri.https(Constants.domain, "/3/movie/upcoming", {
       "language": "en-US",
@@ -45,6 +47,24 @@ class ApiManager {
       return movies.movies;
     } else {
       throw Exception("Failed to fetch data");
+    }
+  }
+
+  static Future<Movies> fetchSearch(String queryParameters) async {
+    Uri url = Uri.https(
+      'api.themoviedb.org',
+      '/3/search/movie',
+      {
+        'api_key': Constants.apiKey,
+        'query': queryParameters,
+      },
+    );
+    final response = await http.get(url);
+    var searchResponse = Movies.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return searchResponse;
+    } else {
+      throw Exception('Failed to load Data');
     }
   }
 }
