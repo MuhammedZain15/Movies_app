@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/moduls/home/pages/item_photo_widget.dart';
+
+import '../../../../models/popular/popular_movies_model.dart';
+import 'item_photo_Rcommended.dart';
 
 class TopRatedItem extends StatelessWidget {
-  const TopRatedItem({super.key});
+  final MoviesModel movie;
+
+  const TopRatedItem({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,9 @@ class TopRatedItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              ItemPhotoWidget(),
+              ItemPhotoRecommended(
+                movie: movie,
+              ),
             ],
           ),
           Container(
@@ -38,7 +44,7 @@ class TopRatedItem extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      '7.9',
+                      movie.rating.toString().substring(0,3),
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -48,7 +54,7 @@ class TopRatedItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  "Narcos",
+                  movie.movieTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -58,7 +64,7 @@ class TopRatedItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  "2019",
+                  movie.releaseDate,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 10,

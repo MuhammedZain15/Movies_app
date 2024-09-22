@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/moduls/home/popular_manager/cubit.dart';
 import 'package:movies_app/moduls/home/popular_manager/states.dart';
+import 'package:movies_app/moduls/home/recommended_manager/cubit.dart';
+import 'package:movies_app/moduls/home/recommended_manager/states.dart';
 import 'package:movies_app/moduls/home/upcoming_manager/cubit.dart';
 import 'package:movies_app/moduls/home/upcoming_manager/states.dart';
 import 'package:movies_app/moduls/home/widget/New%20Releases/new_releases.dart';
@@ -22,7 +24,8 @@ class HomePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UpComingCubit()..getUpComingMovies(),
-        )
+        ),
+        BlocProvider(create: (context) => RecommendedCubit()..getRecommendedList(),)
       ],
       child: SafeArea(
         child: Column(
@@ -78,9 +81,25 @@ class HomePage extends StatelessWidget {
               },
               listener: (context, state) {},
             ),
+            BlocConsumer<RecommendedCubit,RecommendedStates>(builder: (context, state) {
+              var cubit = RecommendedCubit.get(context);
+              if (cubit.recommendedList.isEmpty) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Color.fromRGBO(255, 187, 59, 1.0),
+                  ),
+                );
 
-            // NewReleases(),
-            TopRatedWidget()
+              }
+              return TopRatedWidget(
+                movie: cubit.recommendedList,
+              );
+            }, listener: (context, state) {
+
+            },)
+
+            
+           
           ],
         ),
       ),

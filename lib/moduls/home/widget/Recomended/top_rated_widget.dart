@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/home/widget/Recomended/top_rated_item.dart';
 
+import '../../../../models/popular/popular_movies_model.dart';
+
 class TopRatedWidget extends StatelessWidget {
-  const TopRatedWidget({super.key});
+  final List<MoviesModel> movie;
+
+  const TopRatedWidget({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +20,8 @@ class TopRatedWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Recomended',
+          const Text(
+            'Recommended',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -28,9 +32,10 @@ class TopRatedWidget extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) =>
-                  TopRatedItem(),
-              itemCount: 10
+              itemBuilder: (BuildContext context, int index) => TopRatedItem(
+                movie: movie[index],
+              ),
+              itemCount: movie.length,
             ),
           ),
         ],
