@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/home/widget/Popular/Popular_item.dart';
 
+import '../../../../models/popular/popular_movies_model.dart';
+
 class PopularWidget extends StatelessWidget {
-  const PopularWidget({super.key});
+  final MoviesModel movie;
+
+  const PopularWidget({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,8 @@ class PopularWidget extends StatelessWidget {
             Container(
               child: Stack(
                 children: [
-                  Image.asset("assets/images/Image.png"),
+                  Image.network(
+                      "https://image.tmdb.org/t/p/w500/${movie.backDropImage}"),
                   Positioned(
                     left: size.width * 0.40,
                     top: size.height * 0.09,
@@ -31,9 +36,11 @@ class PopularWidget extends StatelessWidget {
             Positioned(
               left: size.width * 0.05,
               top: size.height * 0.06,
-              child: const Row(
+              child: Row(
                 children: [
-                  PopularItem(),
+                  PopularItem(
+                    movie: movie,
+                  ),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +48,7 @@ class PopularWidget extends StatelessWidget {
                     children: [
                       SizedBox(height: 10),
                       Text(
-                        "Dora and the lost city of gold",
+                       movie.movieTitle,
                         overflow: TextOverflow.visible,
                         maxLines: 2,
                         style: TextStyle(
@@ -51,7 +58,7 @@ class PopularWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        "2019",
+                        movie.releaseDate,
                         style: TextStyle(
                           fontSize: 13,
                           color: Color.fromRGBO(181, 180, 180, 1.0),

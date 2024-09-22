@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/layout/layout_view.dart';
 import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.dart';
 import 'package:movies_app/moduls/splash/splash_view.dart';
+import 'package:movies_app/services/api_manager/apimanager.dart';
 import 'package:movies_app/services/theme/application_theme_manger.dart';
 
 void main() {
+
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {

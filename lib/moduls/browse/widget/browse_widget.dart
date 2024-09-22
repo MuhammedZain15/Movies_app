@@ -16,8 +16,8 @@ class BrowseWidget extends StatelessWidget {
           alignment: AlignmentDirectional.center,
           children: [
             ClipRRect(
-              child: Image.asset('assets/images/image_cat.png'),
               borderRadius: BorderRadius.circular(10),
+              child: Image.asset('assets/images/image_cat.png'),
             ),
             const Text(
              "Action",

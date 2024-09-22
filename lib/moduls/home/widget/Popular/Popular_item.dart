@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.dart';
 
+import '../../../../models/popular/popular_movies_model.dart';
+
 class PopularItem extends StatelessWidget {
-  const PopularItem({super.key});
+  final MoviesModel movie;
+
+  const PopularItem({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,8 @@ class PopularItem extends StatelessWidget {
                       builder: (context) => DetailsScreen(),
                     ));
               },
-              child: Image.asset(
-                "assets/images/item_image.png",
+              child: Image.network(
+                "https://image.tmdb.org/t/p/w500/${movie.posterImage}",
                 fit: BoxFit.cover,
                 width: 130,
                 height: 200,
