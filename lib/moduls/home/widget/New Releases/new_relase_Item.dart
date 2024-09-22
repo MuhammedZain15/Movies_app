@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/home/pages/item_photo_widget.dart';
 
+import '../../../../models/popular/popular_movies_model.dart';
+import 'item_photo_newReleases.dart';
+
 class NewReleasesItem extends StatelessWidget {
-  const NewReleasesItem({super.key});
+  final MoviesModel movie;
+  const NewReleasesItem({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,9 @@ class NewReleasesItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
-      child: const ItemPhotoWidget(),
+      child: ItemPhotoNewReleases(
+        movie: movie,
+      ),
     );
   }
 }
