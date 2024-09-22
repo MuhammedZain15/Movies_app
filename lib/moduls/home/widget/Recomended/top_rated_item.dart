@@ -23,7 +23,7 @@ class TopRatedItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Stack(
+          Stack(
             children: [
               ItemPhotoRecommended(
                 movie: movie,
@@ -32,7 +32,7 @@ class TopRatedItem extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.all(6),
-            child: const Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(

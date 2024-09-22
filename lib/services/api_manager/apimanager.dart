@@ -52,6 +52,28 @@ class ApiManager {
 
 
 
+
+static Future<List<MoviesModel>> fetchRecommendedMovies() async {
+var url = Uri.https(
+  Constants.domain,
+  "/3/movie/top_rated",
+  {
+    "language": "en-US",
+    "page": "1",
+  },
+);
+final response = await http.get(url, headers: {
+"Authorization": Constants.apiToken,
+"accept": "application/json",
+});
+if (response.statusCode == 200) {
+var data = jsonDecode(response.body);
+
+var movies = PopularMoviesModel.fromJson(data);
+return movies.movies;
+} else {
+throw Exception("Failed to fetch data");
+}
 }
 
   static Future<Movies> fetchSearch(String queryParameters) async {
