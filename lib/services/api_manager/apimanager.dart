@@ -33,7 +33,7 @@ class ApiManager {
       "language": "en-US",
       "page": "1",
     });
-    final response = await http.get(
+    final response =  await http.get(
       url,
       headers: {
         "Authorization": Constants.apiToken,
@@ -49,6 +49,10 @@ class ApiManager {
       throw Exception("Failed to fetch data");
     }
   }
+
+
+
+}
 
   static Future<Movies> fetchSearch(String queryParameters) async {
     Uri url = Uri.https(
@@ -72,3 +76,4 @@ class ApiManager {
      --url 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1' \
      --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZWQ1MzRiZjc2ZDNmOWNkYzZlZmQ2ZmY5NTE1YmIwZCIsIm5iZiI6MTcyNjk2NTY1OC43ODUxMTIsInN1YiI6IjY2ZWY2NmU1NzMwMGE1YmEyMTNiMzUzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gnmn32i-DZQSEm3eRNrD_YyKJxssekYC2JVHKcTF6rI' \
      --header 'accept: application/json'*/
+

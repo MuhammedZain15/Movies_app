@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/moduls/home/widget/New%20Releases/new_relase_Item.dart';
 
+import '../../../../models/popular/popular_movies_model.dart';
+
 class NewReleases extends StatelessWidget {
-  const NewReleases({super.key});
+  final List<MoviesModel> movie;
+
+  const NewReleases({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +32,10 @@ class NewReleases extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) =>
-                  const NewReleasesItem(),
-              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) => NewReleasesItem(
+                movie: movie[index],
+              ),
+              itemCount: movie.length,
             ),
           ),
         ],

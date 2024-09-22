@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/moduls/home/pages/item_photo_widget.dart';
+
+import '../../pages/item_photo_widget.dart';
+
 
 class MoreMoviesItem extends StatelessWidget {
   const MoreMoviesItem({super.key});

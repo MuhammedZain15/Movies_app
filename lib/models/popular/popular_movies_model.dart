@@ -17,16 +17,20 @@ class MoviesModel {
   final String movieTitle;
   final String posterImage;
   final String releaseDate;
+  final double rating;
 
-  MoviesModel(
-      {required this.backDropImage,
-      required this.movieId,
-      required this.movieTitle,
-      required this.posterImage,
-      required this.releaseDate});
+  MoviesModel({
+    required this.backDropImage,
+    required this.movieId,
+    required this.movieTitle,
+    required this.posterImage,
+    required this.releaseDate,
+    required this.rating,
+  });
 
   factory MoviesModel.fromJson(Map<String, dynamic> json) {
     return MoviesModel(
+      rating: json["vote_average"],
       backDropImage: json['backdrop_path'],
       movieId: json['id'],
       movieTitle: json['title'],
