@@ -49,6 +49,20 @@ class ApiManager {
     }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   static Future<List<MoviesModel>> fetchRecommendedMovies() async {
     var url = Uri.https(
       Constants.domain,
@@ -71,6 +85,33 @@ class ApiManager {
       throw Exception("Failed to fetch data");
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 /*curl --request GET \
      --url 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1' \
