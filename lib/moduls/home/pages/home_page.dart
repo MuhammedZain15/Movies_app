@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                   );
                 }
                 return CarouselSlider.builder(
-                  itemCount: 100,
+                  itemCount: cubit.popularList.length,
                   options: CarouselOptions(
                     height: size.height * 0.30,
                     viewportFraction: 1,

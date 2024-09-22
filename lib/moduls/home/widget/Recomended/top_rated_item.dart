@@ -9,24 +9,24 @@ class TopRatedItem extends StatelessWidget {
     return Container(
       width: 110,
       height: 188,
-      margin: EdgeInsets.symmetric(horizontal: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
-        color: Color(0xff343534),
+        color: const Color(0xff343534),
         boxShadow: [
-          BoxShadow(color: Colors.black45, blurRadius: 1.6),
+          const BoxShadow(color: Colors.black45, blurRadius: 1.6),
         ],
       ),
       child: Column(
         children: [
-          Stack(
+          const Stack(
             children: [
               ItemPhotoWidget(),
             ],
           ),
           Container(
-            margin: EdgeInsets.all(6),
-            child: Column(
+            margin: const EdgeInsets.all(6),
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
