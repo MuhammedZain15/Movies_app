@@ -25,7 +25,10 @@ class WatchListPage extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.separated(
-                    itemBuilder: (context, index) => const WatchListItem(),
+                    itemBuilder: (context, index) => Text("data"),
+                    /*WatchListItem(
+
+                    ),*/
                     separatorBuilder: (context, index) => Container(
                           margin: const EdgeInsets.only(
                             left: 2,
