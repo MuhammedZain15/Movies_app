@@ -62,7 +62,7 @@ class TopRatedItem extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 3),
+
                 Text(
                   movie.releaseDate,
                   textAlign: TextAlign.start,

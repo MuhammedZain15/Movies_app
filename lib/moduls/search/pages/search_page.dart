@@ -11,7 +11,6 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  TextEditingController textController = TextEditingController();
   List<Results> result = [];
   String searchKey = '';
 

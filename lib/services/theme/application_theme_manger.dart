@@ -6,7 +6,7 @@ class ApplicationThemeManger {
   static const Color primaryColor = Color.fromRGBO(18, 19, 18, 1.0);
   static ThemeData defaultTheme = ThemeData(
     scaffoldBackgroundColor: primaryColor,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       backgroundColor: Color.fromRGBO(26, 26, 26, 1.0),
       unselectedItemColor: Colors.white,
