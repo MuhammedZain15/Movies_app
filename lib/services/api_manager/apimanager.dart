@@ -105,33 +105,10 @@ class ApiManager {
       throw Exception('Failed to load Data');
     }
   }
-  static Future<Movies> fetchMoviesList(String catName) async {
-
-    var url = Uri.https(
-      Constants.domain,
-      '/3/discover/movie',
-      {
-        "language": "en-US",
-        'with_genres': catName
-      },
-    );
-    final response = await http.get(url, headers: {
-      "Authorization": Constants.apiToken,
-      "accept": "application/json",
-    });
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-
-      var movies = Movies.fromJson(data);
-      return movies;
-    } else {
-      throw Exception("Failed to fetch data");
-    }
-
-  }
-    /*Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
+  static Future<Movies> fetchMoviesList(String catId) async {
+Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
       'api_key': Constants.apiKey,
-      'with_genres': catName,
+      'with_genres': catId,
     });
     final response = await http.get(url);
     var listResponse = Movies.fromJson(jsonDecode(response.body));
@@ -140,9 +117,5 @@ class ApiManager {
     } else {
       throw Exception('Faild to load album');
     }
-  }*/
+  }
 }
-/*curl --request GET \
-     --url 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1' \
-     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZWQ1MzRiZjc2ZDNmOWNkYzZlZmQ2ZmY5NTE1YmIwZCIsIm5iZiI6MTcyNjk2NTY1OC43ODUxMTIsInN1YiI6IjY2ZWY2NmU1NzMwMGE1YmEyMTNiMzUzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gnmn32i-DZQSEm3eRNrD_YyKJxssekYC2JVHKcTF6rI' \
-     --header 'accept: application/json'*/

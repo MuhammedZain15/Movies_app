@@ -36,7 +36,7 @@ class BrowseList extends StatelessWidget {
           children: [
             Expanded(
               child: FutureBuilder<Movies>(
-                future: ApiManager.fetchMoviesList(genresResponse!.name!),
+                future: ApiManager.fetchMoviesList(genresResponse!.id!.toString()),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     print("error");
