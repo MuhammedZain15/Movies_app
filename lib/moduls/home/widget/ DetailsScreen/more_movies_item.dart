@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/popular/popular_movies_model.dart';
 
+import '../../../../services/config/constants.dart';
 import '../../pages/item_photo_widget.dart';
 
 
 class MoreMoviesItem extends StatelessWidget {
-  const MoreMoviesItem({super.key});
+  final MoviesModel movie;
+
+  const MoreMoviesItem({
+    super.key,
+    required this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +30,25 @@ class MoreMoviesItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              ItemPhotoWidget(),
+              InkWell(
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: Image.network(
+                    "${Constants.link}${movie.posterImage}",
+                    fit: BoxFit.cover,
+                    width: 110,
+                    height: 130,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Image.asset('assets/icons/ic_bookmark.png'),
+                ),
+              ),
             ],
           ),
           Container(
@@ -40,7 +65,7 @@ class MoreMoviesItem extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      "7.7",
+                      movie.rating.toString().substring(0,3),
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -50,7 +75,7 @@ class MoreMoviesItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  "Movie name",
+                  movie.movieTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -60,7 +85,7 @@ class MoreMoviesItem extends StatelessWidget {
                 ),
                 SizedBox(height: 3),
                 Text(
-                  "2017",
+                  movie.releaseDate,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 10,

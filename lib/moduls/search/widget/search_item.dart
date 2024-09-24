@@ -26,13 +26,13 @@ class _SearchItemState extends State<SearchItem> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(
+                   /* Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) =>
-                            const DetailsScreen(),
+                             DetailsScreen(),
                       ),
-                    );
+                    );*/
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),

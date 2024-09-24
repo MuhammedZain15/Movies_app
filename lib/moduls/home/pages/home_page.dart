@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
         BlocProvider(
           create: (context) => UpComingCubit()..getUpComingMovies(),
         ),
-        BlocProvider(create: (context) => RecommendedCubit()..getRecommendedList(),)
+        BlocProvider(
+          create: (context) => RecommendedCubit()..getRecommendedList(),
+        ),
       ],
       child: SafeArea(
         child: Column(
@@ -81,25 +83,22 @@ class HomePage extends StatelessWidget {
               },
               listener: (context, state) {},
             ),
-            BlocConsumer<RecommendedCubit,RecommendedStates>(builder: (context, state) {
-              var cubit = RecommendedCubit.get(context);
-              if (cubit.recommendedList.isEmpty) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: Color.fromRGBO(255, 187, 59, 1.0),
-                  ),
+            BlocConsumer<RecommendedCubit, RecommendedStates>(
+              builder: (context, state) {
+                var cubit = RecommendedCubit.get(context);
+                if (cubit.recommendedList.isEmpty) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Color.fromRGBO(255, 187, 59, 1.0),
+                    ),
+                  );
+                }
+                return TopRatedWidget(
+                  movie: cubit.recommendedList,
                 );
-
-              }
-              return TopRatedWidget(
-                movie: cubit.recommendedList,
-              );
-            }, listener: (context, state) {
-
-            },)
-
-            
-           
+              },
+              listener: (context, state) {},
+            )
           ],
         ),
       ),
