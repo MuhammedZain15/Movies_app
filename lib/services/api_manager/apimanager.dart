@@ -120,9 +120,6 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
       throw Exception('Faild to load album');
     }
   }
-
-}
-
   static Future<DetailsModel> fetchDetails(int id) async {
     var url = Uri.https(Constants.domain, "/3/movie/$id", {
       "language": "en-US",
@@ -135,15 +132,15 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
         "accept": "application/json",
       },
     );
- if(response.statusCode==200){
-   var data = jsonDecode(response.body);
+    if(response.statusCode==200){
+      var data = jsonDecode(response.body);
 
-   var movie = DetailsModel.fromJson(data);
-   return movie;
- }
- else {
-   throw Exception('Failed to load Details');
- }
+      var movie = DetailsModel.fromJson(data);
+      return movie;
+    }
+    else {
+      throw Exception('Failed to load Details');
+    }
   }
 
   static Future<List<MoviesModel>> fetchSimilarMovies(int id)async{
@@ -166,3 +163,7 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
   }
 
 }
+
+
+
+
