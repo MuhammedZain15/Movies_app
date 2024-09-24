@@ -41,25 +41,25 @@ class PopularWidget extends StatelessWidget {
                   PopularItem(
                     movie: movie,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10),
                       Text(
                        movie.movieTitle,
                         overflow: TextOverflow.visible,
                         maxLines: 2,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8),
                       Text(
                         movie.releaseDate,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 13,
                           color: Color.fromRGBO(181, 180, 180, 1.0),
                         ),

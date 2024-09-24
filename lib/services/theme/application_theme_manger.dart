@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class ApplicationThemeManger {
   static const Color primaryColor = Color.fromRGBO(18, 19, 18, 1.0);
   static ThemeData defaultTheme = ThemeData(
+    primaryColor: primaryColor,
     scaffoldBackgroundColor: primaryColor,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,

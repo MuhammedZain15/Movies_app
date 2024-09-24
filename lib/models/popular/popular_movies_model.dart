@@ -1,10 +1,10 @@
-class PopularMoviesModel {
+class MoviesModelList {
   final List<MoviesModel> movies;
 
-  PopularMoviesModel({required this.movies});
+  MoviesModelList({required this.movies});
 
-  factory PopularMoviesModel.fromJson(Map<String, dynamic> json) {
-    return PopularMoviesModel(
+  factory MoviesModelList.fromJson(Map<String, dynamic> json) {
+    return MoviesModelList(
         movies: (json["results"] as List)
             .map((e) => MoviesModel.fromJson(e))
             .toList());
@@ -30,12 +30,12 @@ class MoviesModel {
 
   factory MoviesModel.fromJson(Map<String, dynamic> json) {
     return MoviesModel(
-      rating: json["vote_average"],
-      backDropImage: json['backdrop_path'],
-      movieId: json['id'],
-      movieTitle: json['title'],
-      posterImage: json['poster_path'],
-      releaseDate: json['release_date'],
+      rating: json["vote_average"] ?? 0,
+      backDropImage: json['backdrop_path'] ?? "/wvqdJLVh0mSblly7UnYFPEk04Wd.jpg",
+      movieId: json['id'] ?? 0,
+      movieTitle: json['title'] ?? "",
+      posterImage: json['poster_path'] ?? "/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
+      releaseDate: json['release_date'] ?? "",
     );
   }
 }

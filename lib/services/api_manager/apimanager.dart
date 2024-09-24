@@ -4,6 +4,7 @@ import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/services/config/constants.dart';
 import 'package:http/http.dart' as http;
+import '../../models/details_model/details.dart';
 import '../../models/popular/popular_movies_model.dart';
 
 class ApiManager {
@@ -21,8 +22,8 @@ class ApiManager {
     );
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      print(data);
-      var movies = PopularMoviesModel.fromJson(data);
+
+      var movies = MoviesModelList.fromJson(data);
       return movies.movies;
     } else {
       throw Exception("Failed to fetch data");
@@ -43,8 +44,8 @@ class ApiManager {
     );
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      print(data);
-      var movies = PopularMoviesModel.fromJson(data);
+
+      var movies = MoviesModelList.fromJson(data);
       return movies.movies;
     } else {
       throw Exception("Failed to fetch data");
@@ -67,7 +68,7 @@ class ApiManager {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
 
-      var movies = PopularMoviesModel.fromJson(data);
+      var movies = MoviesModelList.fromJson(data);
       return movies.movies;
     } else {
       throw Exception("Failed to fetch data");
@@ -91,6 +92,7 @@ class ApiManager {
       throw Exception('Failed to load Data');
     }
   }
+
 
   static Future<GenresModel> FetchGenres() async {
     Uri url = Uri.https(Constants.domain, "/3/genre/movie/list", {
@@ -118,4 +120,49 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
       throw Exception('Faild to load album');
     }
   }
+
+}
+
+  static Future<DetailsModel> fetchDetails(int id) async {
+    var url = Uri.https(Constants.domain, "/3/movie/$id", {
+      "language": "en-US",
+      "page": "1",
+    });
+    final response = await http.get(
+      url,
+      headers: {
+        "Authorization": Constants.apiToken,
+        "accept": "application/json",
+      },
+    );
+ if(response.statusCode==200){
+   var data = jsonDecode(response.body);
+
+   var movie = DetailsModel.fromJson(data);
+   return movie;
+ }
+ else {
+   throw Exception('Failed to load Details');
+ }
+  }
+
+  static Future<List<MoviesModel>> fetchSimilarMovies(int id)async{
+    var url =Uri.https(Constants.domain,"/3/movie/$id/similar",{
+      "language": "en-US",
+      "page": "1",
+    });
+    final response = await http.get(url,headers: {
+      "Authorization": Constants.apiToken,
+      "accept": "application/json",
+    });
+    if ( response.statusCode==200){
+      var data =jsonDecode(response.body);
+
+      var movie =MoviesModelList.fromJson(data);
+      return movie.movies;
+    }else{
+      throw Exception('Failed to load Similar Movies');
+    }
+  }
+
 }
