@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../ DetailsScreen/details_screen.dart';
-import '../../../../models/popular/popular_movies_model.dart';
+import '../../home/widget/ DetailsScreen/details_screen.dart';
 
-class ItemPhotoRecommended extends StatefulWidget {
-  final MoviesModel movie;
-
-  const ItemPhotoRecommended({super.key, required this.movie});
+class ResultItem extends StatefulWidget {
+  final String path;
+  final int id;
+  const ResultItem({super.key, required this.path, required this.id});
 
   @override
-  State<ItemPhotoRecommended> createState() => _ItemPhotoRecommendedState();
+  State<ResultItem> createState() => _ResultItemState();
 }
 
-class _ItemPhotoRecommendedState extends State<ItemPhotoRecommended> {
-  bool isClicked = false;
+class _ResultItemState extends State<ResultItem> {
+  bool isClicked= false;
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return  Stack(
       children: [
         InkWell(
           onTap: () {
@@ -25,7 +24,7 @@ class _ItemPhotoRecommendedState extends State<ItemPhotoRecommended> {
               MaterialPageRoute(
                 builder: (context) => DetailsScreen(),
                 settings: RouteSettings(
-                  arguments: widget.movie.movieId,
+                  arguments: widget.id,
                 ),
               ),
             );
@@ -33,10 +32,10 @@ class _ItemPhotoRecommendedState extends State<ItemPhotoRecommended> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: Image.network(
-              'https://image.tmdb.org/t/p/w500/${widget.movie.posterImage}',
+              'https://image.tmdb.org/t/p/w500/${widget.path}',
               fit: BoxFit.cover,
-              width: 110,
-              height: 130,
+              width: 150,
+              height: 100,
             ),
           ),
         ),

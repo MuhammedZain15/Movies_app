@@ -13,6 +13,7 @@ class SearchItem extends StatefulWidget {
 }
 
 class _SearchItemState extends State<SearchItem> {
+  bool isClicked =false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,18 +27,20 @@ class _SearchItemState extends State<SearchItem> {
               children: [
                 InkWell(
                   onTap: () {
-                   /* Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                             DetailsScreen(),
+                          builder: (BuildContext context) =>
+                              const DetailsScreen(),
+                          settings: RouteSettings(arguments: widget.movieResponse?.id)
                       ),
-                    );*/
+                    );
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),
                     child: Image.network(
-                      'https://image.tmdb.org/t/p/w500${widget.movieResponse!.posterPath}',
+                      'https://image.tmdb.org/t/p/w500${widget.movieResponse!
+                          .posterPath}',
                       fit: BoxFit.cover,
                       width: 150,
                       height: 100,
@@ -45,10 +48,16 @@ class _SearchItemState extends State<SearchItem> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      isClicked=!isClicked;
+                    });
+                  },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(4),
-                    child: Image.asset('assets/icons/ic_bookmark.png'),
+                    child:Image.asset(
+                      isClicked? "assets/icons/is_check.png":'assets/icons/ic_bookmark.png',
+                    ),
                   ),
                 ),
               ],
@@ -77,8 +86,8 @@ class _SearchItemState extends State<SearchItem> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  "OverView:jdshakdjahdkaj",
+                 Text(
+                  widget.movieResponse!.overview!,
                   maxLines: 1,
                   style: TextStyle(
                     fontSize: 13,

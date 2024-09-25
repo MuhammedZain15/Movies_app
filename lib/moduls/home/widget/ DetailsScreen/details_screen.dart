@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/moduls/home/details_manager/cubit.dart';
+import 'package:movies_app/moduls/home/widget/%20DetailsScreen/item_photo.dart';
 import 'package:movies_app/moduls/home/widget/%20DetailsScreen/more_movies_widget.dart';
 import 'package:movies_app/services/config/constants.dart';
 
@@ -53,7 +54,7 @@ class DetailsScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: size.height * 0.22,
+                      height: size.height * 0.21,
                       child: Stack(
                         children: [
                           Image.network(
@@ -77,16 +78,19 @@ class DetailsScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
-                          Text(
-                            cubit.movieDetails!.movieTitle,
-                            overflow: TextOverflow.visible,
-                            maxLines: 2,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+                          SizedBox(
+                            width: size.width * .95,
+                            child: Text(
+                              cubit.movieDetails!.movieTitle,
+                              overflow: TextOverflow.visible,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ],
@@ -113,20 +117,7 @@ class DetailsScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 10),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.network(
-                                  "${Constants.link}${cubit.movieDetails!.posterImage}",
-                                  fit: BoxFit.fill,
-                                  width: size.width - size.width * .7,
-                                  height: 240,
-                                ),
-                              ),
-                              Image.asset('assets/icons/ic_bookmark.png'),
-                            ],
-                          ),
+                          child: ItemPhoto(path: cubit.movieDetails!.posterImage),
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.min,
@@ -163,15 +154,17 @@ class DetailsScreen extends StatelessWidget {
                                 width: size.width * .65,
                                 child: Text(
                                   cubit.movieDetails!.overview,
+                                  maxLines: 5,
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 7),
@@ -209,10 +202,11 @@ class DetailsScreen extends StatelessWidget {
                   ],
                 ),
               );
-            }
-            else{
-              return  CircularProgressIndicator(
-                color: theme.primaryColor,
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: theme.primaryColor,
+                ),
               );
             }
           }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/models/search_model.dart';
-import 'package:movies_app/moduls/watchlist/widget/watch_list_item.dart';
+import 'package:movies_app/moduls/browse/widget/result_item.dart';
 import 'package:movies_app/services/api_manager/apimanager.dart';
 import 'package:movies_app/services/theme/application_theme_manger.dart';
 
@@ -36,10 +36,10 @@ class BrowseList extends StatelessWidget {
           children: [
             Expanded(
               child: FutureBuilder<Movies>(
-                future: ApiManager.fetchMoviesList(genresResponse!.id!.toString()),
+                future:
+                    ApiManager.fetchMoviesList(genresResponse!.id!.toString()),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    print("error");
                     return Center(
                       child: Text(
                         'error => ${snapshot.error}',
@@ -48,14 +48,13 @@ class BrowseList extends StatelessWidget {
                     );
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
-                    print('waiting');
                     return const Center(
                       child: CircularProgressIndicator(
                         color: Colors.yellow,
                       ),
                     );
                   }
-                  print("has data");
+
                   return ListView.separated(
                     itemBuilder: (buildContext, index) {
                       return Container(
@@ -65,29 +64,12 @@ class BrowseList extends StatelessWidget {
                         height: 100,
                         child: Row(
                           children: [
-                            Stack(
-                              children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(6),
-                                    child: Image.network(
-                                      'https://image.tmdb.org/t/p/w500/${snapshot.data?.results!.elementAt(index).posterPath ?? ""}',
-                                      fit: BoxFit.cover,
-                                      width: 150,
-                                      height: 100,
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(4),
-                                    child: Image.asset(
-                                        'assets/icons/ic_bookmark.png'),
-                                  ),
-                                ),
-                              ],
+                            ResultItem(
+                              path: snapshot.data?.results!
+                                      .elementAt(index)
+                                      .posterPath ??
+                                  "",
+                              id: snapshot.data!.results!.elementAt(index).id!,
                             ),
                             const SizedBox(width: 10),
                             Expanded(
@@ -240,7 +222,7 @@ Container(
                                   ),
                                 ],
                               ),
-                            ),
+                            ),y
                           ],
                         ),
                       );

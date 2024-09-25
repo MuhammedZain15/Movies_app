@@ -21,7 +21,7 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-            /*height: 100,*/
+
             child: TextFormField(
               onChanged: (String? value) {
                 searchKey = value ?? "";
@@ -106,7 +106,7 @@ class _SearchPageState extends State<SearchPage> {
   List loadSearchData() {
     ApiManager.fetchSearch(searchKey).then((value) {
       result = value.results ?? [];
-      print(result);
+
     });
     return result;
   }
