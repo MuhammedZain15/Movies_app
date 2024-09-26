@@ -5,11 +5,17 @@ import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.da
 
 import '../../../../models/popular/popular_movies_model.dart';
 
-class PopularItem extends StatelessWidget {
+class PopularItem extends StatefulWidget {
   final MoviesModel movie;
 
   const PopularItem({super.key, required this.movie});
 
+  @override
+  State<PopularItem> createState() => _PopularItemState();
+}
+
+class _PopularItemState extends State<PopularItem> {
+  bool isChecked =false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,23 +30,27 @@ class PopularItem extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => DetailsScreen(),
                   settings: RouteSettings(
-                    arguments: movie.movieId,
+                    arguments: widget.movie.movieId,
                   ),
                 ),
               );
             },
             child: Image.network(
-              "https://image.tmdb.org/t/p/w500/${movie.posterImage}",
+              "https://image.tmdb.org/t/p/w500/${widget.movie.posterImage}",
               fit: BoxFit.cover,
               width: 130.w,
               height: 175.h,
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                isChecked =!isChecked;
+              });
+            },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: Image.asset('assets/icons/ic_bookmark.png'),
+              child:!isChecked? Image.asset('assets/icons/ic_bookmark.png'):Image.asset("assets/icons/is_check.png"),
             ),
           ),
         ],
