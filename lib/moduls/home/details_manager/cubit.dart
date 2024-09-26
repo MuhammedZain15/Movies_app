@@ -24,7 +24,7 @@ class DetailsCubit extends Cubit<DetailsStates> {
       log(movies.length.toString());
       emit(SuccessStates());
     } catch (e) {
-      print(e);
+
       emit(ErrorStates());
     }
   }

@@ -21,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     var theme = Theme.of(context);
     var id = ModalRoute.of(context)?.settings.arguments as int;
-    log(id.toString());
+
     return BlocProvider(
       create: (BuildContext context) => DetailsCubit()
         ..getDetails(id)
@@ -40,7 +40,7 @@ class DetailsScreen extends StatelessWidget {
                 appBar: AppBar(
                   title: Text(
                     cubit.movieDetails!.movieTitle,
-                    style:  TextStyle(
+                    style: TextStyle(
                       fontSize: 20.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
@@ -67,7 +67,7 @@ class DetailsScreen extends StatelessWidget {
                             Positioned(
                               left: size.width * 0.40,
                               top: size.height * 0.08,
-                              child:  Icon(
+                              child: Icon(
                                 Icons.play_circle_filled,
                                 size: 70.sp,
                                 color: Colors.white,
@@ -76,7 +76,7 @@ class DetailsScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10.h,
                       ),
                       Padding(
@@ -89,7 +89,7 @@ class DetailsScreen extends StatelessWidget {
                                 cubit.movieDetails!.movieTitle,
                                 overflow: TextOverflow.visible,
                                 maxLines: 2,
-                                style:  TextStyle(
+                                style: TextStyle(
                                   fontSize: 16.sp,
                                   color: Colors.white,
                                 ),
@@ -119,7 +119,8 @@ class DetailsScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(left: 10),
-                            child: ItemPhoto(path: cubit.movieDetails!.posterImage),
+                            child: ItemPhoto(
+                                path: cubit.movieDetails!.posterImage),
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.min,
@@ -129,17 +130,21 @@ class DetailsScreen extends StatelessWidget {
                                 height: 75.h,
                                 width: size.width * .3,
                                 child: GridView.builder(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 10),
-                                  itemCount: cubit.movieDetails!.genreIds.length,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                  itemCount:
+                                      cubit.movieDetails!.genreIds.length,
                                   scrollDirection: Axis.horizontal,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          mainAxisSpacing: 5,
-                                          crossAxisSpacing:1,
-                                          mainAxisExtent: 60),
-                                  itemBuilder: (BuildContext context, int index) {
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 5,
+                                    crossAxisSpacing: 1,
+                                    mainAxisExtent: 60,
+                                  ),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     return CategoryContainer(
                                       category: cubit
                                           .movieDetails!.genreIds[index].name,
@@ -151,7 +156,7 @@ class DetailsScreen extends StatelessWidget {
                                 height: 10.h,
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: SizedBox(
                                   width: size.width * .64,
                                   child: Text(
@@ -169,22 +174,22 @@ class DetailsScreen extends StatelessWidget {
                                 height: 10.h,
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 7),
+                                padding: const EdgeInsets.only(left: 7),
                                 child: Row(
                                   children: [
-                                     Icon(
+                                    Icon(
                                       Icons.star_rounded,
-                                      color: Color(0xFFFFBB3B),
+                                      color: const Color(0xFFFFBB3B),
                                       size: 30.sp,
                                     ),
-                                     SizedBox(
+                                    SizedBox(
                                       width: 5.w,
                                     ),
                                     Text(
                                       cubit.movieDetails!.rating
                                           .toString()
                                           .substring(0, 3),
-                                      style:  TextStyle(
+                                      style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20.sp,
                                           fontWeight: FontWeight.w400),

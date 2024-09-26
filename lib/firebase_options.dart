@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'movies-app-9f6ea.appspot.com',
     iosBundleId: 'com.example.moviesApp',
   );
+
 }
