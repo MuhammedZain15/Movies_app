@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
           create: (context) => RecommendedCubit()..getRecommendedList(),
         ),
       ],
-      child: SafeArea(
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
