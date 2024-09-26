@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../models/popular/popular_movies_model.dart';
 import 'item_photo_Rcommended.dart';
@@ -11,11 +12,11 @@ class TopRatedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      height: 188,
-      margin: const EdgeInsets.symmetric(horizontal: 6),
+      width: 110.w,
+      height: 188.h,
+      margin:  EdgeInsets.symmetric(horizontal: 6.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(6.sp),
         color: const Color(0xff343534),
         boxShadow: [
           const BoxShadow(color: Colors.black45, blurRadius: 1.6),
@@ -39,26 +40,26 @@ class TopRatedItem extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.grade,
-                      size: 18,
+                      size: 18.sp,
                       color: Color.fromRGBO(255, 187, 59, 1.0),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Text(
                       movie.rating.toString().substring(0,3),
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 3),
+                SizedBox(height: 3.h),
                 Text(
                   movie.movieTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: Colors.white,
                   ),
                 ),
@@ -67,7 +68,7 @@ class TopRatedItem extends StatelessWidget {
                   movie.releaseDate,
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 10.sp,
                     color: Color.fromRGBO(181, 180, 180, 1.0),
                   ),
                 ),

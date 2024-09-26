@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../ DetailsScreen/details_screen.dart';
 import '../../../../models/popular/popular_movies_model.dart';
 
@@ -37,8 +37,8 @@ class _ItemPhotoNewReleasesState extends State<ItemPhotoNewReleases> {
             child: Image.network(
               'https://image.tmdb.org/t/p/w500/${widget.movie.posterImage}',
               fit: BoxFit.cover,
-              width: 110,
-              height: 130,
+              width: 110.w,
+              height: 130.h,
             ),
           ),
         ),

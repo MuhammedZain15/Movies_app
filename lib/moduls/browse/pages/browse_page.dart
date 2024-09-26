@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/moduls/browse/widget/browse_widget.dart';
 import 'package:movies_app/services/api_manager/apimanager.dart';
@@ -15,10 +16,10 @@ class BrowsePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+             Text(
               'Browse Category',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

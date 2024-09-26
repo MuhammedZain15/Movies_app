@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/main.dart';
 import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/moduls/browse/widget/browse_list.dart';
 
@@ -21,8 +23,8 @@ class BrowseWidget extends StatelessWidget {
         );
       },
       child: Container(
-        width: 160.0,
-        height: 90.0,
+        width: 160.0.w,
+        height: 90.0.h,
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
@@ -32,8 +34,8 @@ class BrowseWidget extends StatelessWidget {
             ),
             Text(
               genres.name ?? "",
-              style: const TextStyle(
-                fontSize: 18,
+              style:  TextStyle(
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),

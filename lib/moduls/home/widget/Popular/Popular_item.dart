@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/main.dart';
 import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.dart';
 
 import '../../../../models/popular/popular_movies_model.dart';
@@ -10,9 +12,9 @@ class PopularItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 130,
-      height: 300,
+    return SizedBox(
+      width: 130.w,
+      height: 250.h,
       child: Stack(
         children: [
           InkWell(
@@ -30,8 +32,8 @@ class PopularItem extends StatelessWidget {
             child: Image.network(
               "https://image.tmdb.org/t/p/w500/${movie.posterImage}",
               fit: BoxFit.cover,
-              width: 130,
-              height: 200,
+              width: 130.w,
+              height: 175.h,
             ),
           ),
           InkWell(

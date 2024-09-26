@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/main.dart';
 
 import '../../../../services/config/constants.dart';
 
@@ -28,7 +30,7 @@ class _ItemPhotoState extends State<ItemPhoto> {
             "${Constants.link}${widget.path}",
             fit: BoxFit.fill,
             width: size.width - size.width * .7,
-            height: 240,
+            height: 170.h,
           ),
         ),
         InkWell(
