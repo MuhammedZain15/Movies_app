@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/moduls/browse/widget/result_item.dart';
@@ -21,8 +22,8 @@ class BrowseList extends StatelessWidget {
         ),
         title: Text(
           '${genresResponse!.name} List',
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -61,7 +62,7 @@ class BrowseList extends StatelessWidget {
                         margin:
                             const EdgeInsets.only(top: 10, right: 8, left: 8),
                         width: double.infinity,
-                        height: 100,
+                        height: 100.h,
                         child: Row(
                           children: [
                             ResultItem(
@@ -71,7 +72,7 @@ class BrowseList extends StatelessWidget {
                                   "",
                               id: snapshot.data!.results!.elementAt(index).id!,
                             ),
-                            const SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,12 +85,12 @@ class BrowseList extends StatelessWidget {
                                         "",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 15,
+                                    style:  TextStyle(
+                                      fontSize: 15.sp,
                                       color: Colors.white,
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
+                                  SizedBox(height: 5.h),
                                   Text(
                                     snapshot.data?.results
                                             ?.elementAt(index)
@@ -97,8 +98,8 @@ class BrowseList extends StatelessWidget {
                                         "",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 13,
+                                    style:  TextStyle(
+                                      fontSize: 13.sp,
                                       color: Color.fromRGBO(181, 180, 180, 1.0),
                                     ),
                                   ),
@@ -110,8 +111,8 @@ class BrowseList extends StatelessWidget {
                                         "",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 13,
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
                                       color: Color.fromRGBO(181, 180, 180, 1.0),
                                     ),
                                   ),
@@ -130,7 +131,7 @@ class BrowseList extends StatelessWidget {
                         bottom: 18,
                       ),
                       width: double.infinity,
-                      height: 1,
+                      height: 1.h,
                       color: Colors.grey,
                     ),
                     itemCount: snapshot.data!.results!.length,

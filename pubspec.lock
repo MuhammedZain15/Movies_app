@@ -94,6 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      sha256: "8239210dd68bee6b0577aa4a090890342d04a136ce1c81f98ee513fc0ce891de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -107,14 +115,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.2"
-  http_interceptor:
-    dependency: "direct main"
-    description:
-      name: http_interceptor
-      sha256: "288c6ded4a2c66de2730a16b30cbd29d05d042a5e61304d9b4be0e16378f4082"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   http_parser:
     dependency: transitive
     description:
@@ -195,14 +195,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
-  pretty_http_logger:
-    dependency: "direct main"
-    description:
-      name: pretty_http_logger
-      sha256: f5317ccccb2d1837f6d7ba029d69447bf03c3e9b7b9599f5409f71a267ae2ac0
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.4"
   provider:
     dependency: transitive
     description:

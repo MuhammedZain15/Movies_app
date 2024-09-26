@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/moduls/home/widget/Popular/Popular_item.dart';
 
 import '../../../../models/popular/popular_movies_model.dart';
@@ -41,26 +42,26 @@ class PopularWidget extends StatelessWidget {
                   PopularItem(
                     movie: movie,
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 10.w ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Text(
                        movie.movieTitle,
                         overflow: TextOverflow.visible,
                         maxLines: 2,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       Text(
                         movie.releaseDate,
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: Color.fromRGBO(181, 180, 180, 1.0),
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/moduls/home/widget/New%20Releases/new_relase_Item.dart';
 
 import '../../../../models/popular/popular_movies_model.dart';
@@ -13,17 +14,17 @@ class NewReleases extends StatelessWidget {
     return Container(
       alignment: Alignment.topLeft,
       width: double.infinity,
-      height: 180,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      height: 180.h,
+      margin:  EdgeInsets.symmetric(vertical: 10.h),
+      padding:  EdgeInsets.symmetric(vertical: 10.sp, horizontal: 10.sp),
       color: const Color(0xFF282A28),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'New Releases ',
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),

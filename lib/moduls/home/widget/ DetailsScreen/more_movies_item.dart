@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/popular/popular_movies_model.dart';
-
 import '../../../../services/config/constants.dart';
-import '../../pages/item_photo_widget.dart';
 import 'details_screen.dart';
 
 class MoreMoviesItem extends StatefulWidget {
@@ -23,8 +22,8 @@ class _MoreMoviesItemState extends State<MoreMoviesItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      height: 175,
+      width: 110.w,
+      height: 150.h,
       margin: EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
@@ -54,8 +53,8 @@ class _MoreMoviesItemState extends State<MoreMoviesItem> {
                   child: Image.network(
                     "${Constants.link}${widget.movie.posterImage}",
                     fit: BoxFit.cover,
-                    width: 110,
-                    height: 130,
+                    width: 110.w,
+                    height: 130.h,
                   ),
                 ),
               ),
@@ -85,35 +84,35 @@ class _MoreMoviesItemState extends State<MoreMoviesItem> {
                   children: [
                     Icon(
                       Icons.grade,
-                      size: 18,
+                      size: 18.sp,
                       color: Color.fromRGBO(255, 187, 59, 1.0),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Text(
                       widget.movie.rating.toString().substring(0, 3),
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         color: Colors.white,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 3),
+                SizedBox(height: 3.h),
                 Text(
                   widget.movie.movieTitle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 3),
+                SizedBox(height: 3.h),
                 Text(
                   widget.movie.releaseDate,
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 10.sp,
                     color: Color.fromRGBO(181, 180, 180, 1.0),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/moduls/home/widget/Recomended/top_rated_item.dart';
 
 import '../../../../models/popular/popular_movies_model.dart';
@@ -13,22 +14,22 @@ class TopRatedWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: size.height * 0.32,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+      height: 250.h,
+      margin: EdgeInsets.symmetric(vertical: 10.h),
+      padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 10.w),
       color: Color(0xFF282A28),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Recommended',
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
-          const SizedBox(height: 10),
+           SizedBox(height: 10.h),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
