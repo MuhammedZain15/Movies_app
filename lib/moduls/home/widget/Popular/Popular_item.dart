@@ -12,9 +12,9 @@ class PopularItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 130.w,
-      height: 300.h,
+      height: 250.h,
       child: Stack(
         children: [
           InkWell(
@@ -33,7 +33,7 @@ class PopularItem extends StatelessWidget {
               "https://image.tmdb.org/t/p/w500/${movie.posterImage}",
               fit: BoxFit.cover,
               width: 130.w,
-              height: 200.h,
+              height: 175.h,
             ),
           ),
           InkWell(

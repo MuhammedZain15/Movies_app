@@ -13,64 +13,62 @@ class PopularWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-        height: size.height * 0.30,
-        margin: const EdgeInsets.all(5),
-        child: Stack(
-          children: [
-            Container(
-              child: Stack(
-                children: [
-                  Image.network(
-                      "https://image.tmdb.org/t/p/w500/${movie.backDropImage}"),
-                  Positioned(
-                    left: size.width * 0.40,
-                    top: size.height * 0.09,
-                    child: const Icon(
-                      Icons.play_circle_filled,
-                      size: 70,
-                      color: Colors.white,
+      height: size.height * 0.30,
+      margin: const EdgeInsets.all(5),
+      child: Stack(
+        children: [
+          Stack(
+            children: [
+              Image.network(
+                  "https://image.tmdb.org/t/p/w500/${movie.backDropImage}"),
+              Positioned(
+                left: size.width * 0.40,
+                top: size.height * 0.09,
+                child: const Icon(
+                  Icons.play_circle_filled,
+                  size: 70,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            left: size.width * 0.02,
+            top: size.height * 0.12,
+            child: Row(
+              children: [
+                PopularItem(
+                  movie: movie,
+                ),
+                SizedBox(width: 10.w),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    Text(
+                      movie.movieTitle,
+                      overflow: TextOverflow.visible,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              left: size.width * 0.05,
-              top: size.height * 0.06,
-              child: Row(
-                children: [
-                  PopularItem(
-                    movie: movie,
-                  ),
-                  SizedBox(width: 10.w ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(height: 10.h),
-                      Text(
-                       movie.movieTitle,
-                        overflow: TextOverflow.visible,
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: Colors.white,
-                        ),
+                    Text(
+                      movie.releaseDate,
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        color: Color(0xFFB5B4B4),
                       ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        movie.releaseDate,
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          color: Color.fromRGBO(181, 180, 180, 1.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+
+                  ],
+                ),
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

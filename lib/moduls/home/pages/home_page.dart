@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                   return CarouselSlider.builder(
                     itemCount: cubit.popularList.length,
                     options: CarouselOptions(
-                      height:200.h,
+                      height:270.h,
                       viewportFraction: 1,
                       initialPage: 0,
                       enableInfiniteScroll: true,
@@ -69,6 +69,7 @@ class HomePage extends StatelessWidget {
                 },
                 listener: (BuildContext context, PopularStates state) {},
               ),
+
               BlocConsumer<UpComingCubit, UpComingStates>(
                 builder: (context, state) {
                   var cubit = UpComingCubit.get(context);

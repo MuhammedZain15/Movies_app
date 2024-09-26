@@ -85,7 +85,7 @@ class DetailsScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               SizedBox(
-                                width: size.width * .95,
+                                width: size.width * .94,
                                 child: Text(
                                   cubit.movieDetails!.movieTitle,
                                   overflow: TextOverflow.visible,
@@ -154,7 +154,7 @@ class DetailsScreen extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.only(left: 10),
                                   child: SizedBox(
-                                    width: size.width * .65,
+                                    width: size.width * .64,
                                     child: Text(
                                       cubit.movieDetails!.overview,
                                       maxLines: 5,
