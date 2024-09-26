@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:movies_app/layout/layout_view.dart';
 import 'package:movies_app/moduls/home/widget/%20DetailsScreen/details_screen.dart';
 import 'package:movies_app/moduls/splash/splash_view.dart';
@@ -9,7 +11,9 @@ import 'firebase_options.dart';
 
 void main() async{
 
-
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('favoritesBox');
 WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
