@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movies_app/moduls/watchlist/widget/watch_list_item.dart';
 
 class WatchListPage extends StatefulWidget {
@@ -33,27 +34,29 @@ class _WatchListPageState extends State<WatchListPage> {
               ),
             ),
             Expanded(
-              child: ListView.separated(
-                itemCount: favoritesBox.length,
-                itemBuilder: (context, index) {
-                  final movieId = favoritesBox.getAt(index);
+              child: ValueListenableBuilder(
+                valueListenable: favoritesBox.listenable(),
+                builder: (context, value, child) => ListView.separated(
+                  itemCount: favoritesBox.length,
+                  itemBuilder: (context, index) {
+                    final movieId = favoritesBox.getAt(index);
 
-                  return WatchListItem(
-                    MovieId:movieId ,
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 2,
-                        right: 2,
-                        top: 20,
-                        bottom: 10,
-                      ),
-                      width: double.infinity,
-                      height: 1,
-                      color: Colors.grey,
+                    return WatchListItem(
+                      MovieId: movieId,
+                    );
+                  },
+                  separatorBuilder: (context, index) => Container(
+                    margin: const EdgeInsets.only(
+                      left: 2,
+                      right: 2,
+                      top: 20,
+                      bottom: 10,
                     ),
+                    width: double.infinity,
+                    height: 1,
+                    color: Colors.grey,
+                  ),
+                ),
               ),
             ),
           ],

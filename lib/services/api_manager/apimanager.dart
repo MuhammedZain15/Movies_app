@@ -93,7 +93,6 @@ class ApiManager {
     }
   }
 
-
   static Future<GenresModel> FetchGenres() async {
     Uri url = Uri.https(Constants.domain, "/3/genre/movie/list", {
       'api_key': Constants.apiKey,
@@ -107,8 +106,9 @@ class ApiManager {
       throw Exception('Failed to load Data');
     }
   }
+
   static Future<Movies> fetchMoviesList(String catId) async {
-Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
+    Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
       'api_key': Constants.apiKey,
       'with_genres': catId,
     });
@@ -120,6 +120,7 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
       throw Exception('Faild to load album');
     }
   }
+
   static Future<DetailsModel> fetchDetails(int id) async {
     var url = Uri.https(Constants.domain, "/3/movie/$id", {
       "language": "en-US",
@@ -132,38 +133,32 @@ Uri url = Uri.https(Constants.domain, '/3/discover/movie', {
         "accept": "application/json",
       },
     );
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
 
       var movie = DetailsModel.fromJson(data);
       return movie;
-    }
-    else {
+    } else {
       throw Exception('Failed to load Details');
     }
   }
 
-  static Future<List<MoviesModel>> fetchSimilarMovies(int id)async{
-    var url =Uri.https(Constants.domain,"/3/movie/$id/similar",{
+  static Future<List<MoviesModel>> fetchSimilarMovies(int id) async {
+    var url = Uri.https(Constants.domain, "/3/movie/$id/similar", {
       "language": "en-US",
       "page": "1",
     });
-    final response = await http.get(url,headers: {
+    final response = await http.get(url, headers: {
       "Authorization": Constants.apiToken,
       "accept": "application/json",
     });
-    if ( response.statusCode==200){
-      var data =jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
 
-      var movie =MoviesModelList.fromJson(data);
+      var movie = MoviesModelList.fromJson(data);
       return movie.movies;
-    }else{
+    } else {
       throw Exception('Failed to load Similar Movies');
     }
   }
-
 }
-
-
-
-
