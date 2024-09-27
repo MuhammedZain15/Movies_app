@@ -12,7 +12,7 @@ class TopRatedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110.w,
+      width: 100.w,
       height: 188.h,
       margin:  EdgeInsets.symmetric(horizontal: 6.h),
       decoration: BoxDecoration(
