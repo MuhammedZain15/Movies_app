@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/main.dart';
 import 'package:movies_app/moduls/home/popular_manager/cubit.dart';
 import 'package:movies_app/moduls/home/popular_manager/states.dart';
 import 'package:movies_app/moduls/home/recommended_manager/cubit.dart';
