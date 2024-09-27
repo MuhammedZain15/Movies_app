@@ -3,9 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:movies_app/moduls/watchlist/widget/watch_list_item.dart';
 
-class WatchListPage extends StatelessWidget {
+class WatchListPage extends StatefulWidget {
   const WatchListPage({super.key});
 
+  @override
+  State<WatchListPage> createState() => _WatchListPageState();
+}
+
+class _WatchListPageState extends State<WatchListPage> {
   @override
   Widget build(BuildContext context) {
     final Box favoritesBox = Hive.box('favoritesBox');
