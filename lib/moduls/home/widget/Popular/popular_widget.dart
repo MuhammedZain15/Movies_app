@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/moduls/home/widget/Popular/Popular_item.dart';
@@ -19,8 +20,22 @@ class PopularWidget extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(
-                  "https://image.tmdb.org/t/p/w500/${movie.backDropImage}"),
+              CachedNetworkImage(
+                imageUrl:
+                "https://image.tmdb.org/t/p/w500/${movie.backDropImage}",
+
+                key: UniqueKey(),
+                placeholder: (context, url) {
+                  return CircularProgressIndicator(
+                    color: Color(0xFFFFB224),
+                  );
+                },
+                errorWidget: (context, url, error) => const Icon(
+                  Icons.error,
+                  size: 35,
+                  color: Colors.red,
+                ),
+              ),
               Positioned(
                 left: size.width * 0.40,
                 top: size.height * 0.09,

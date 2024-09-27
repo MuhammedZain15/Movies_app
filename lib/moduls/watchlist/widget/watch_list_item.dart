@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/services/api_manager/apimanager.dart';
+
+import '../../home/widget/ DetailsScreen/details_screen.dart';
 
 class WatchListItem extends StatelessWidget {
   int MovieId;
@@ -13,11 +16,8 @@ class WatchListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-
       future: ApiManager.fetchDetails(MovieId),
-
       builder: (context, snapshot) => Container(
-
         margin: const EdgeInsets.only(top: 10, right: 8, left: 8),
         width: double.infinity,
         height: 100.h,
@@ -26,14 +26,34 @@ class WatchListItem extends StatelessWidget {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      DetailsScreen.routeName,
+                      arguments: MovieId,
+                    );
+                  },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-                    child: Image.network(
-                      "https://image.tmdb.org/t/p/w500/${snapshot.data?.backDropImage}",
-                      fit: BoxFit.cover,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "https://image.tmdb.org/t/p/w500/${snapshot.data?.backDropImage}",
                       width: 150.w,
-                      height: 100.h,
+                      height: 100.w,
+                      key: UniqueKey(),
+                      placeholder: (context, url) {
+                        return  Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFFFFB224),
+
+                          ),
+                        );
+                      },
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.error,
+                        size: 35,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ),
@@ -68,6 +88,7 @@ class WatchListItem extends StatelessWidget {
                   Text(
                     snapshot.data?.overview ?? "",
                     maxLines: 1,
+                    textWidthBasis: TextWidthBasis.longestLine,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 13.sp,
@@ -83,3 +104,4 @@ class WatchListItem extends StatelessWidget {
     );
   }
 }
+

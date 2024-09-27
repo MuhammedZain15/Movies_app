@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,10 +60,25 @@ class DetailsScreen extends StatelessWidget {
                         height: size.height * 0.21,
                         child: Stack(
                           children: [
-                            Image.network(
+                            CachedNetworkImage(
+                              imageUrl:
                               "${Constants.link}${cubit.movieDetails?.backDropImage}",
                               fit: BoxFit.cover,
                               width: double.infinity,
+
+                              key: UniqueKey(),
+                              placeholder: (context, url) {
+                                return const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Color(0xFFFFB224),
+                                  ),
+                                );
+                              },
+                              errorWidget: (context, url, error) => const Icon(
+                                Icons.error,
+                                size: 35,
+                                color: Colors.red,
+                              ),
                             ),
                             Positioned(
                               left: size.width * 0.40,
@@ -119,7 +135,7 @@ class DetailsScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(left: 10),
-                            child: ItemPhoto(path: cubit.movieDetails!.posterImage),
+                            child: ItemPhoto(movie: cubit.movieDetails!,),
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.min,

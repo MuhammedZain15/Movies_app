@@ -63,6 +63,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
           searchKey.isNotEmpty
               ? Expanded(
+
             child: ListView.separated(
 
               itemBuilder: (BuildContext context, index) {
