@@ -30,12 +30,14 @@ class _WatchListItemState extends State<WatchListItem> {
 
   void _toggleFavorite() {
     favoritesBox.delete(widget.MovieId);
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return FutureBuilder(
+
       future: ApiManager.fetchDetails(widget.MovieId),
       builder: (context, snapshot) => Slidable(
         direction: Axis.horizontal,
